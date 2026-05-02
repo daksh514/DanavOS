@@ -2,6 +2,8 @@
 
 import ReusableWindow from "@/components/ui/dashboard/ReusableWindow";
 import { useOSStore } from "./store/useAppOpen";
+import CalculatorApp from "@/components/ui/dashboard/appButtons/Calculator";
+import Settings from "@/components/ui/dashboard/Settings";
 
 // Define your app contents here to keep page.tsx clean
 const APPS = {
@@ -16,10 +18,17 @@ const APPS = {
         ))}
       </div>
     ),
+    customSize: undefined,
+  },
+  calculator: {
+    title: "Calculator",
+    content: <CalculatorApp />,
+    customSize: { width: 400, height: 500 }, // Optional custom size for this app
   },
   settings: {
     title: "Settings",
-    content: <p>System Preferences</p>,
+    content: <Settings />,
+    customSize: undefined,
   },
 };
 
@@ -35,6 +44,7 @@ export default function WindowManager() {
             key={id}
             title={config.title}
             onClose={() => toggleApp(id, false)}
+            customSize={config.customSize}
           >
             {config.content}
           </ReusableWindow>

@@ -16,6 +16,7 @@ function Dashboard() {
       />
       <div className="absolute top-6 left-6 flex flex-col gap-5">
         <Button name="explorer" icon="📂" />
+        <Button name="calculator" icon="🧮" />
       </div>
       <BottomBar />
 
