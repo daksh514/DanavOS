@@ -1,4 +1,5 @@
 import React from "react";
+import StartBtn from "./StartBtn";
 
 export default function BottomBar() {
   return (
@@ -49,7 +50,7 @@ export default function BottomBar() {
       </div>
 
       {/* Corner element */}
-      <div className="absolute left-4 bottom-4">Corner</div>
+      <StartBtn />
     </div>
   );
 }
