@@ -3,18 +3,27 @@
 import connectDB from "@/lib/db";
 import UserIdModel from "@/lib/models/userId";
 
-export async function saveUserId(userId: string) {
+export async function saveUserId(
+  userId: string,
+): Promise<{ ok: boolean; error?: string }> {
   const normalizedUserId = typeof userId === "string" ? userId.trim() : "";
 
   if (!normalizedUserId) {
-    throw new Error("Missing userId");
+    return { ok: false, error: "Missing userId" };
   }
 
-  await connectDB();
+  try {
+    await connectDB();
 
-  await UserIdModel.findOneAndUpdate(
-    { userId: normalizedUserId },
-    { userId: normalizedUserId },
-    { upsert: true },
-  );
+    await UserIdModel.findOneAndUpdate(
+      { userId: normalizedUserId },
+      { userId: normalizedUserId },
+      { upsert: true },
+    );
+
+    return { ok: true };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return { ok: false, error: message };
+  }
 }

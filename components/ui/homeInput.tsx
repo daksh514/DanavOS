@@ -39,7 +39,7 @@ export default function HomeInput({
       }
       try {
         await saveUserId(userId);
-      } catch {
+      } catch (error) {
         alert("Could not save user ID. Please try again.");
         setLoading(false);
         return;
