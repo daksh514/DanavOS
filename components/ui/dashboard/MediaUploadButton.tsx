@@ -18,7 +18,7 @@ export default function MediaUploadButton({
       endpoint={endpoint}
       appearance={{
         button:
-          "ut-ready:bg-primary ut-uploading:bg-primary/70 rounded-lg px-3 py-2 text-sm",
+          "ut-ready:bg-primary ut-uploading:bg-primary/80 ut-ready:text-primary-foreground ut-uploading:text-primary-foreground inline-flex h-9 min-w-56 items-center justify-center rounded-lg border border-border px-3 text-sm font-medium shadow-sm",
         allowedContent: "hidden",
       }}
       content={{

@@ -4,16 +4,22 @@ import React from "react";
 import { delay, motion } from "framer-motion";
 import { div } from "framer-motion/client";
 
-export default function HeroText({ name }: { name: string | undefined }) {
+export default function HeroText({
+  name,
+  pfpLink,
+}: {
+  name: string | undefined;
+  pfpLink: string | undefined;
+}) {
   return (
     <div>
       <div className=" text-center flex items-center">
         <Image
-          src={name ? `/profile.jpg` : "/profile.png"}
+          src={pfpLink || "/profile.jpg"}
           alt="Profile"
           width={120}
           height={120}
-          className="mx-auto rounded-full mb-5"
+          className="mx-auto rounded-full mb-5 size-20"
         />
       </div>
       <div>

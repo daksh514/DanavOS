@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import MediaUploadButton from "@/components/ui/dashboard/MediaUploadButton";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const EMPTY_MEDIA: UserMediaResult = {
   userId: "",
@@ -22,6 +23,7 @@ const EMPTY_MEDIA: UserMediaResult = {
 };
 
 export default function Settings() {
+  const router = useRouter();
   const [oldPassword, setOldPassword] = useState("");
   const cookieName = Cookies.get("name");
   const [name, setName] = useState(cookieName ?? "");
@@ -115,6 +117,13 @@ export default function Settings() {
     try {
       const result = await uploadUserImage(userId, url, "wallpaper");
       setMedia(result);
+      if (result.activeWallpaper) {
+        Cookies.set("wallpaper", result.activeWallpaper, {
+          expires: 365,
+          path: "/",
+        });
+      }
+      router.refresh();
     } catch {
       alert("Failed to save wallpaper.");
     } finally {
@@ -132,6 +141,7 @@ export default function Settings() {
       const result = await setActiveWallpaper(userId, wallpaperUrl);
       setMedia(result);
       Cookies.set("wallpaper", wallpaperUrl, { expires: 365, path: "/" });
+      router.refresh();
     } catch {
       alert("Failed to set active wallpaper.");
     } finally {
@@ -168,7 +178,9 @@ export default function Settings() {
               className="h-20 w-20 rounded-full border object-cover"
             />
           ) : (
-            <p className="text-sm text-muted-foreground">No profile picture yet.</p>
+            <p className="text-sm text-muted-foreground">
+              No profile picture yet.
+            </p>
           )}
           <MediaUploadButton
             endpoint="pfpUploader"
