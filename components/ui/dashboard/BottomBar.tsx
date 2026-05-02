@@ -1,5 +1,5 @@
-import React from "react";
 import StartBtn from "./StartBtn";
+import Button from "./appButtons/Button";
 
 export default function BottomBar() {
   return (
@@ -36,16 +36,7 @@ export default function BottomBar() {
           </div>
 
           {/* App 3 */}
-          <div className="flex flex-col items-center group cursor-pointer">
-            <div
-              className="w-12 h-12 rounded-xl bg-white/20 
-                      flex items-center justify-center
-                      transition-all duration-200 
-                      group-hover:scale-125"
-            >
-              📁
-            </div>
-          </div>
+          <Button name="explorer" icon="📂" className="w-12 h-12 rounded-xl" />
         </div>
       </div>
 
