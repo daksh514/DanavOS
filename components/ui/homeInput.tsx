@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { Input } from "./input";
 import { Button } from "./button";
 import { useRouter } from "next/navigation";
-
+import Cookies from "js-cookie";
+import { saveUserId } from "@/app/actions/saveUserId";
 export default function HomeInput({
   name,
   password,
@@ -15,6 +16,7 @@ export default function HomeInput({
   const [newName, setNewName] = React.useState("");
   const [newPassword, setNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   function setCookie() {
     document.cookie = `name=${newName}; path=/; max-age=86400`;
     console.log(newName, newPassword);
@@ -22,13 +24,33 @@ export default function HomeInput({
 
     router.refresh();
   }
-  function login() {
+  async function login() {
+    const uniqueId = `${name!.toLowerCase().replace(/\s+/g, "")}-${newPassword}`;
+
+    Cookies.set("userId", uniqueId, { expires: 7, path: "/" });
     console.log(password);
     if (oldPassword === password) {
+      setLoading(true);
+      const userId = Cookies.get("userId"); // Get the ID we stored
+      if (!userId) {
+        alert("User ID missing. Please set credentials again.");
+        setLoading(false);
+        return;
+      }
+      try {
+        await saveUserId(userId);
+      } catch {
+        alert("Could not save user ID. Please try again.");
+        setLoading(false);
+        return;
+      }
       alert("Login successful!");
+      setLoading(false);
       router.push("/dashboard"); // <-- Redirect to dashboard
     } else {
       alert("Incorrect password. Please try again.");
+      setLoading(false);
+      setOldPassword("");
     }
   }
   return (

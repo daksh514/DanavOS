@@ -23,7 +23,7 @@ const APPS = {
   calculator: {
     title: "Calculator",
     content: <CalculatorApp />,
-    customSize: { width: 600, height: 500 }, // Optional custom size for this app
+    customSize: { width: 400, height: 500 }, // Optional custom size for this app
   },
   settings: {
     title: "Settings",

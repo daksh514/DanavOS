@@ -1,11 +1,13 @@
 "use client";
-
+import Cookies from "js-cookie";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function StartBtn() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   // Close when clicking outside
   useEffect(() => {
@@ -34,7 +36,13 @@ export default function StartBtn() {
             ⚙️ Settings
           </button>
 
-          <button className="text-left px-3 py-2 rounded-lg cursor-pointer hover:bg-white/20 transition">
+          <button
+            className="text-left px-3 py-2 rounded-lg cursor-pointer hover:bg-white/20 transition"
+            onClick={() => {
+              Cookies.remove("userId");
+              router.push("/"); // Redirect to home page after logout
+            }}
+          >
             🔄 Log Out
           </button>
 

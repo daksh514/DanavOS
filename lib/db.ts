@@ -1,9 +1,5 @@
 import mongoose from "mongoose";
-const MONGODB_URI = process.env.MONGO_URI;
-
-if (!MONGODB_URI) {
-  throw new Error("MONGO_URI is not defined in environment variables");
-}
+const MONGODB_URI = process.env.MONGODB_URI ?? process.env.MONGO_URI;
 
 interface MongooseCache {
   conn: typeof mongoose | null;
@@ -23,7 +19,7 @@ if (!global.mongoose) {
 async function connectDB() {
   if (!MONGODB_URI) {
     throw new Error(
-      "Please define the MONGODB_URI environment variable inside .env",
+      "Please define MONGODB_URI (or MONGO_URI) inside .env",
     );
   }
 
@@ -34,6 +30,10 @@ async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      serverSelectionTimeoutMS: 8000,
+      connectTimeoutMS: 8000,
+      socketTimeoutMS: 10000,
+      family: 4,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
