@@ -18,9 +18,11 @@ export default function ReusableWindow({
       dragMomentum={false}
       initial={{ x: 100, y: 100, opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="absolute z-50 flex h-[600px] w-[600px] flex-col overflow-hidden rounded-lg border border-gray-300 bg-white shadow-xl"
+      className="absolute z-50 flex h-150 w-150 flex-col overflow-hidden rounded-lg border border-gray-300 bg-white shadow-xl"
       style={
-        customSize ? { width: customSize.width, height: customSize.height } : undefined
+        customSize
+          ? { width: customSize.width, height: customSize.height }
+          : undefined
       }
     >
       <div className="bg-gray-200 p-2 flex justify-between items-center cursor-move select-none">
