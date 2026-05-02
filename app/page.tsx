@@ -1,5 +1,6 @@
 import HeroText from "@/components/ui/HeroText";
 import HomeInput from "@/components/ui/homeInput";
+import HomeClock from "@/components/ui/HomeClock";
 import { cookies } from "next/headers";
 import connectDB from "@/lib/db";
 import UserMediaModel from "@/lib/models/userMedia";
@@ -23,18 +24,21 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-10">
       <div
-        className="-z-10 absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 -z-20 bg-cover bg-center"
         style={{ backgroundImage: `url("/bg.jpg")` }}
       />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-black/45 to-black/60" />
 
-      <div className="mt-40">
+      <div className="w-full max-w-md rounded-3xl border border-white/25 bg-white/10 px-6 py-8 shadow-2xl backdrop-blur-xl sm:px-8">
         <HeroText name={name?.value} pfpLink={pfpLink} />
-        <div className="mt-4">
+        <div className="mt-6">
           <HomeInput name={name?.value} password={password?.value} />
         </div>
       </div>
+
+      <HomeClock />
     </div>
   );
 }

@@ -33,7 +33,7 @@ export default function RootLayout({
     "html",
     {
       lang: "en",
-      className: ` ${inter.variable}  ${geistSans.variable} ${geistMono.variable} h-full antialiased`,
+      className: `overflow-hidden ${inter.variable}   ${geistSans.variable} ${geistMono.variable} h-full antialiased`,
     },
     React.createElement("body", null, children),
   );

@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
-import { delay, motion } from "framer-motion";
-import { div } from "framer-motion/client";
+import { motion } from "framer-motion";
 
 export default function HeroText({
   name,
@@ -11,9 +9,10 @@ export default function HeroText({
   name: string | undefined;
   pfpLink: string | undefined;
 }) {
+  console.log(name, pfpLink);
   return (
     <div>
-      <div className=" text-center flex items-center">
+      <div className=" text-center flex items-center font-inter">
         <Image
           src={pfpLink || "/profile.jpg"}
           alt="Profile"
@@ -26,7 +25,7 @@ export default function HeroText({
         {name ? (
           <div>
             <motion.h1
-              className="text-5xl font-mono text-white font-extrabold transition-all "
+              className="text-5xl font-mono text-white font-extrabold transition-all text-center "
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
