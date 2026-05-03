@@ -18,11 +18,15 @@ export default function HomeInput({
   const [oldPassword, setOldPassword] = useState("");
   const [loading, setLoading] = useState(false);
   function setCookie() {
+    setLoading(true);
     document.cookie = `name=${newName}; path=/; max-age=86400`;
     console.log(newName, newPassword);
     document.cookie = `password=${newPassword}; path=/; max-age=86400`;
 
     router.refresh();
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   }
   async function login() {
     const normalizedName = name?.toLowerCase().replace(/\s+/g, "") ?? "";
@@ -65,8 +69,12 @@ export default function HomeInput({
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
           />
-          <Button onClick={login} className="w-full mt-3 h-10 cursor-pointer">
-            Login
+          <Button
+            onClick={login}
+            className="w-full mt-3 h-10 cursor-pointer"
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Login"}
           </Button>
         </div>
       ) : (
@@ -86,8 +94,8 @@ export default function HomeInput({
               console.log(newPassword);
             }}
           />
-          <Button onClick={setCookie} className="w-full">
-            Set Credentials
+          <Button onClick={setCookie} className="w-full" disabled={loading}>
+            {loading ? "Loading..." : "Set Credentials"}
           </Button>
         </div>
       )}
