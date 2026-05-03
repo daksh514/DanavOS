@@ -11,7 +11,7 @@ async function Dashboard() {
   const userId = cookieStore.get("userId")?.value;
   const wallpaperFromCookie = cookieStore.get("wallpaper")?.value;
 
-  let wallpaper = wallpaperFromCookie || "/bg.jpg";
+  let wallpaper = wallpaperFromCookie || "/bgh.jpg";
   if (userId) {
     await connectDB();
     const mediaDoc = await UserMediaModel.findOne({ userId }).lean().exec();
@@ -20,7 +20,7 @@ async function Dashboard() {
   return (
     <div className="min-h-screen font-inter">
       <Image
-        src={wallpaper || "/solarpunk.jpeg"}
+        src={wallpaper || "/bgh.jpg"}
         alt="background"
         fill
         priority

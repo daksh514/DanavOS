@@ -14,7 +14,7 @@ export default async function Home() {
   const userId = cookieStore.get("userId")?.value;
 
   let pfpLink = "";
-  let wallpaper = "/bg.jpg";
+  let wallpaper = "/bgh.jpg";
 
   if (userId) {
     await connectDB();
@@ -27,7 +27,7 @@ export default async function Home() {
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-10">
       <div
         className="absolute inset-0 -z-20 bg-cover bg-center"
-        style={{ backgroundImage: `url("/bg.jpg")` }}
+        style={{ backgroundImage: `url("/bgh.jpg")` }}
       />
       <div className="absolute inset-0 -z-10 bg-linear-to-b from-black/30 via-black/45 to-black/60" />
 

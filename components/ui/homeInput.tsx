@@ -28,12 +28,12 @@ export default function HomeInput({
     const uniqueId = `${name!.toLowerCase().replace(/\s+/g, "")}-${newPassword}`;
 
     Cookies.set("userId", uniqueId, { expires: 7, path: "/" });
-    console.log(password);
+
     if (oldPassword === password) {
       setLoading(true);
       const userId = Cookies.get("userId"); // Get the ID we stored
       if (!userId) {
-        alert("User ID missing. Please set credentials again.");
+        // alert("User ID missing. Please set credentials again.");
         setLoading(false);
         return;
       }
