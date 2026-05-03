@@ -12,8 +12,10 @@ export default async function Home() {
   const name = cookieStore.get("name");
   const password = cookieStore.get("password");
   const userId = cookieStore.get("userId")?.value;
+  const pfpFromCookie =
+    cookieStore.get("pfpLink")?.value || cookieStore.get("pfp")?.value || "";
 
-  let pfpLink = "";
+  let pfpLink = pfpFromCookie;
   let wallpaper = "/bgh.jpg";
 
   if (userId) {

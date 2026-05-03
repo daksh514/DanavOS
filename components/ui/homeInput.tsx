@@ -25,7 +25,8 @@ export default function HomeInput({
     router.refresh();
   }
   async function login() {
-    const uniqueId = `${name!.toLowerCase().replace(/\s+/g, "")}-${newPassword}`;
+    const normalizedName = name?.toLowerCase().replace(/\s+/g, "") ?? "";
+    const uniqueId = `${normalizedName}-${oldPassword}`;
 
     Cookies.set("userId", uniqueId, { expires: 7, path: "/" });
 

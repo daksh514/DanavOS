@@ -101,6 +101,7 @@ export default function Settings() {
       const result = await uploadUserImage(userId, url, "pfp");
       setMedia(result);
       Cookies.set("pfp", result.pfpLink, { expires: 365, path: "/" });
+      Cookies.set("pfpLink", result.pfpLink, { expires: 365, path: "/" });
     } catch {
       alert("Failed to save profile image.");
     } finally {
