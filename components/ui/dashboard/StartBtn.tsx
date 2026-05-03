@@ -3,11 +3,13 @@ import Cookies from "js-cookie";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useOSStore } from "@/lib/store/useAppOpen";
 
 export default function StartBtn() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const toggleApp = useOSStore((state) => state.toggleApp);
 
   // Close when clicking outside
   useEffect(() => {
@@ -32,7 +34,13 @@ export default function StartBtn() {
           className="mb-3 w-40 rounded-xl bg-white/10 backdrop-blur-xl 
                         border border-white/20 shadow-lg p-2 flex flex-col gap-2 "
         >
-          <button className="text-left px-3 py-2 rounded-lg cursor-pointer hover:bg-white/20 transition">
+          <button
+            className="text-left px-3 py-2 rounded-lg cursor-pointer hover:bg-white/20 transition"
+            onClick={() => {
+              toggleApp("settings", true);
+              setOpen(false);
+            }}
+          >
             ⚙️ Settings
           </button>
 
@@ -46,7 +54,13 @@ export default function StartBtn() {
             🔄 Log Out
           </button>
 
-          <button className="text-left px-3 py-2 rounded-lg cursor-pointer   hover:bg-red-500/30 transition text-red-300">
+          <button
+            className="text-left px-3 py-2 rounded-lg cursor-pointer   hover:bg-red-500/30 transition text-red-300"
+            onClick={() => {
+              setOpen(false);
+              router.push("/shutdown");
+            }}
+          >
             ⏻ Shutdown
           </button>
         </motion.div>

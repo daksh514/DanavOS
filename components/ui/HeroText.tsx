@@ -14,7 +14,7 @@ export default function HeroText({
     <div>
       <div className=" text-center flex items-center font-inter">
         <Image
-          src={pfpLink || "/profile.jpg"}
+          src={pfpLink || "/profilee.jpg"}
           alt="Profile"
           width={120}
           height={120}
@@ -25,7 +25,7 @@ export default function HeroText({
         {name ? (
           <div>
             <motion.h1
-              className="text-5xl font-mono text-white font-extrabold transition-all text-center "
+              className="text-5xl font-mono text-white w font-extrabold transition-all text-center "
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}

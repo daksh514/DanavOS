@@ -60,6 +60,7 @@ export default function HomeInput({
           <Input
             className="bg-white h-10"
             placeholder="Enter Password"
+            type="password"
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
           />
