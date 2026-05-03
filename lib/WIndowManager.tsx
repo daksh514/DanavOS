@@ -7,6 +7,7 @@ import Settings from "@/components/ui/dashboard/Settings";
 import Clock from "@/components/clock";
 import Notepad from "@/components/notepad";
 import FileExplorer from "@/components/fileExplorer";
+import Camera from "@/components/camera";
 
 // Define your app contents here to keep page.tsx clean
 const APPS = {
@@ -33,6 +34,11 @@ const APPS = {
   notepad: {
     title: "Notepad",
     content: <Notepad />,
+    customSize: { width: 980, height: 700 },
+  },
+  camera: {
+    title: "Camera",
+    content: <Camera />,
     customSize: { width: 980, height: 700 },
   },
 };

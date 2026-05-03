@@ -13,6 +13,7 @@ export default function BottomBar() {
           <Button name="settings" icon="⚙️" className="w-12 h-12 rounded-xl" />
 
           <Button name="explorer" icon="📂" className="w-12 h-12 rounded-xl" />
+          <Button name="camera" icon="📷" className="w-12 h-12 rounded-xl" />
           <Button name="notepad" icon="📝" className="w-12 h-12 rounded-xl" />
           <Button name="clock" icon="⏰" className="w-12 h-12 rounded-xl" />
         </div>

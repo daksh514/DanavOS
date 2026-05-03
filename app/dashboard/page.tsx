@@ -29,6 +29,7 @@ async function Dashboard() {
       <div className="absolute top-6 left-6 flex flex-col gap-5">
         <Button name="explorer" icon="📂" />
         <Button name="calculator" icon="🧮" />
+        <Button name="camera" icon="📷" />
         <Button name="clock" icon="⏰" />
         <Button name="notepad" icon="📝" />
       </div>

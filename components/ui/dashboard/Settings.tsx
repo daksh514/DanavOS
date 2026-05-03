@@ -20,6 +20,7 @@ const EMPTY_MEDIA: UserMediaResult = {
   pfpLink: "",
   wallpaperLinks: [],
   activeWallpaper: "",
+  cameraPhotos: [],
 };
 
 export default function Settings() {

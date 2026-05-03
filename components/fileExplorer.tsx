@@ -4,6 +4,7 @@ import { getUserMedia } from "@/app/actions/userMedia";
 import { getUserNotes } from "@/app/actions/userNotes";
 import Cookies from "js-cookie";
 import {
+  Download,
   FileText,
   Folder,
   HardDrive,
@@ -39,6 +40,7 @@ export default function FileExplorer() {
   const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [documents, setDocuments] = useState<DocumentItem[]>([]);
   const [showAdminPopup, setShowAdminPopup] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -56,6 +58,15 @@ export default function FileExplorer() {
         ]);
 
         const items: PhotoItem[] = [];
+        media.cameraPhotos.forEach((photo, index) => {
+          if (!photo.dataUrl) return;
+          items.push({
+            id: `camera-${photo.id}`,
+            label: `Camera Photo ${index + 1}`,
+            url: photo.dataUrl,
+          });
+        });
+
         if (media.pfpLink) {
           items.push({
             id: "profile",
@@ -165,8 +176,10 @@ export default function FileExplorer() {
           photos.length > 0 ? (
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
               {photos.map((photo) => (
-                <div
+                <button
                   key={photo.id}
+                  type="button"
+                  onClick={() => setSelectedPhoto(photo)}
                   className="rounded-xl border border-emerald-200/20 bg-emerald-900/25 p-2"
                 >
                   <div className="mb-2 aspect-square overflow-hidden rounded-lg border border-emerald-200/15 bg-black/20">
@@ -179,7 +192,7 @@ export default function FileExplorer() {
                   <p className="truncate text-xs text-emerald-100">
                     {photo.label}
                   </p>
-                </div>
+                </button>
               ))}
             </div>
           ) : (
@@ -237,6 +250,42 @@ export default function FileExplorer() {
                   </p>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {selectedPhoto ? (
+        <div className="absolute inset-0 z-30 grid place-items-center bg-black/60 p-4">
+          <div className="w-full max-w-3xl rounded-2xl border border-emerald-200/25 bg-emerald-950 p-4 shadow-2xl">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <p className="truncate text-sm font-semibold text-emerald-100">
+                {selectedPhoto.label}
+              </p>
+              <button
+                type="button"
+                onClick={() => setSelectedPhoto(null)}
+                className="rounded-md p-1 text-emerald-200/80 hover:bg-emerald-800/40"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+            <div className="overflow-hidden rounded-lg border border-emerald-200/20 bg-black/40">
+              <img
+                src={selectedPhoto.url}
+                alt={selectedPhoto.label}
+                className="max-h-[60vh] w-full object-contain"
+              />
+            </div>
+            <div className="mt-3">
+              <a
+                href={selectedPhoto.url}
+                download={`${selectedPhoto.label.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "photo"}.jpg`}
+                className="inline-flex items-center gap-2 rounded-md border border-emerald-200/30 bg-emerald-800/30 px-3 py-2 text-sm text-emerald-100 hover:bg-emerald-700/35"
+              >
+                <Download className="size-4" />
+                Download Photo
+              </a>
             </div>
           </div>
         </div>
