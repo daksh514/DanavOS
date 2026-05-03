@@ -44,7 +44,7 @@ export default function HomeInput({
         setLoading(false);
         return;
       }
-      alert("Login successful!");
+      // alert("Login successful!");
       setLoading(false);
       router.push("/dashboard"); // <-- Redirect to dashboard
     } else {
