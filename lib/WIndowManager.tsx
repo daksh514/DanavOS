@@ -6,21 +6,14 @@ import CalculatorApp from "@/components/ui/dashboard/appButtons/Calculator";
 import Settings from "@/components/ui/dashboard/Settings";
 import Clock from "@/components/clock";
 import Notepad from "@/components/notepad";
+import FileExplorer from "@/components/fileExplorer";
 
 // Define your app contents here to keep page.tsx clean
 const APPS = {
   explorer: {
     title: "File Explorer",
-    content: (
-      <div className="grid grid-cols-4 gap-4 text-center">
-        {["Documents", "Photos", "System"].map((f) => (
-          <div key={f} className="p-2 hover:bg-blue-100 rounded cursor-pointer">
-            📁 <p className="text-xs">{f}</p>
-          </div>
-        ))}
-      </div>
-    ),
-    customSize: undefined,
+    content: <FileExplorer />,
+    customSize: { width: 980, height: 700 },
   },
   calculator: {
     title: "Calculator",

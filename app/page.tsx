@@ -29,7 +29,7 @@ export default async function Home() {
         className="absolute inset-0 -z-20 bg-cover bg-center"
         style={{ backgroundImage: `url("/bg.jpg")` }}
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-black/45 to-black/60" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-black/30 via-black/45 to-black/60" />
 
       <div className="w-full max-w-md rounded-3xl border border-white/25 bg-white/10 px-6 py-8 shadow-2xl backdrop-blur-xl sm:px-8">
         <HeroText name={name?.value} pfpLink={pfpLink} />

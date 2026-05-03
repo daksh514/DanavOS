@@ -3,8 +3,8 @@ import Button from "./appButtons/Button";
 
 export default function BottomBar() {
   return (
-    <div className="absolute bottom-0 w-full  h-16 flex items-center justify-center ">
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+    <div className="fixed inset-x-0 bottom-4 z-50 flex justify-center">
+      <div>
         <div
           className="flex items-end gap-4 px-6 py-3 rounded-2xl 
                   bg-white/10 backdrop-blur-xl 
