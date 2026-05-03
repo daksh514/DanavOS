@@ -11,9 +11,15 @@ export default async function Home() {
   const cookieStore = await cookies();
   const name = cookieStore.get("name");
   const password = cookieStore.get("password");
-  const userId = cookieStore.get("userId")?.value;
+  const userIdFromCookie = cookieStore.get("userId")?.value;
   const pfpFromCookie =
     cookieStore.get("pfpLink")?.value || cookieStore.get("pfp")?.value || "";
+
+  const fallbackUserId =
+    name?.value && password?.value
+      ? `${name.value.toLowerCase().replace(/\s+/g, "")}-${password.value}`
+      : "";
+  const userId = userIdFromCookie || fallbackUserId;
 
   let pfpLink = pfpFromCookie;
   let wallpaper = "/bgh.jpg";
