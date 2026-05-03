@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🖥️ DanavOS  
+### A Web-Based Operating System  
 
-## Getting Started
+**Built by CyberBlade**  
+Daksh Mangal · Jayesh · Rishit Lal Das  
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Overview  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**DanavOS** is a fully interactive web-based operating system built during a hackathon, designed to simulate a real desktop OS experience inside the browser.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+It goes beyond a static UI — featuring persistent user data, real-time updates, and fully functional apps backed by a database.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ✨ Core Features  
 
-To learn more about Next.js, take a look at the following resources:
+### 🔐 Authentication System  
+- Secure user signup and login  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🧑‍💻 Personalized Environment  
+- Change wallpaper  
+- Update profile (PFP, name, password)  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 💾 Persistent Storage  
+- All user data is stored and synced via database  
 
-## Deploy on Vercel
+### ⚡ Real-Time Sync  
+- Instant updates across sessions  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🧩 Multi-App System  
+- Multiple apps running within a unified OS interface  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🖥️ Desktop UI System  
+- Window-based interaction with draggable components  
+
+### 📌 Bottom Bar (Taskbar)  
+- App launcher  
+- Settings access  
+- Logout / Shutdown functionality  
+
+---
+
+## 📦 Built-in Apps  
+
+### 🧮 Calculator  
+- Basic functional calculator  
+
+### 📸 Camera  
+- Capture photos directly  
+- Store in database  
+- Download anytime  
+
+### 📝 Notepad  
+- Create, edit, delete notes  
+- Auto-saved to database  
+
+### 📁 File Explorer  
+- Browse stored files  
+- Simple file management system  
+
+### ⚙️ Settings  
+- Manage user preferences  
+- Update account details  
+
+---
+
+## 🛠️ Tech Stack  
+
+- **Frontend:** Next.js, Tailwind CSS  
+- **Backend:** MongoDB + Mongoose  
+- **State & UX:** Custom state handling + draggable UI  
+- **File Uploads:** UploadThing  
+- **Session Handling:** JS Cookies  
+
+---
+
+## 🤖 AI Usage  
+
+AI was used as a development assistant in:  
+
+- Debugging complex issues  
+- Implementing draggable UI (Framer Motion integration)  
+- Designing media handling logic with database
+- Writing GitHub Repo
+
+---
+
+## 🧠 What Makes It Interesting  
+
+This isn’t just a UI clone:  
+
+- Simulates real OS behavior in a browser  
+- Maintains persistent user state  
+- Handles media + file storage dynamically  
+- Combines frontend UX + backend logic tightly  
+
+---
+
+## ⚠️ Known Limitations  
+
+- Limited file system depth (basic explorer)  
+- No multi-window concurrency management (yet)  
+- Performance can vary on low-end devices  
+
+---
+
+## 🔮 Future Improvements  
+
+- Multi-window support  
+- Drag & drop file system  
+- App marketplace / plugin system  
+- Offline support (PWA)  
+- Improved performance optimization  
